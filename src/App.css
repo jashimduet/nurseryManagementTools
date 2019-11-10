@@ -1,0 +1,126 @@
+
+h1 {  
+  margin-left: 30px;
+  margin-top: 10px;
+  font-family: arial;
+  color: #5a5a5a;
+}
+ul {
+  display: flex;
+  list-style:none;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content:space-between;
+  flex-basis: 80%; 
+}
+
+  li {
+    flex-basis: 10%;
+    display:flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    align-items:center;          
+  }
+
+  img {
+    margin: 0px 20px 2px 20px;
+    border-radius: 50%;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.2); 
+    width: 200px;
+  }
+  strong{
+    color:green;
+  }
+   .timePickup{
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 30px;
+    padding: 5px;
+
+  } 
+  .time{ 
+    width: 60px;
+    height: 30px;
+    text-align: center;
+    background-color: rgb(0, 140, 255);
+    padding: 5px;    
+    font-size: 20px;
+    margin-right:10px ;
+    cursor: pointer;   
+}
+.time:hover{
+  background-color: burlywood;
+}
+
+p{
+    margin-left: 30px;
+    font-size: 25px;
+}
+
+.signIn{
+  background-color:rgb(174, 155, 192);
+    width: 120vh;
+    height: 80vh;
+    margin-left: 20%;
+    margin-top: 100px;
+    padding: 10px;
+}
+.signInButton{
+    display: flex;
+    margin-top: 18%;        
+    
+}
+  button{
+    width: 300px;
+    height: 50px;
+    font-size: 30px;
+    border-radius: 10px; 
+    cursor: pointer;   
+  }
+  .btnSignIn{
+    background-color: green;
+    margin-left: 60px;
+    margin-top: 45%;
+  }
+  .btnSignInClose{
+    margin-right: 30px;
+    margin-left: 100px;
+    margin-top: 39%;
+  }
+  .signOutButton{
+    display: flex;
+    margin-top: 30%;        
+    
+}
+  .btnSignOut{
+    background-color: red;
+    margin-left: 60px;
+  }
+  .btnClose{
+    margin-right: 30px;
+    margin-left: 120px;
+  }
+  
+.signOut{
+  background-color:rgb(174, 155, 192);
+    width: 120vh;
+    height: 80vh;
+    margin-left: 20%;
+    margin-top: 100px;
+    padding: 10px;
+}
+.profile{
+  text-align: center;
+}
+.hidden{
+  display: none;  
+}
+.checkedMark{
+  margin-top: 15px;
+  margin-bottom: -22px;
+  margin-left: 125px; 
+  z-index: 1; 
+}
+
+
+
