@@ -115,6 +115,15 @@ p{
 .hidden{
   display: none;  
 }
+.showMessage{
+  display: none; 
+   
+}
+  .message{    
+  font-family: arial;
+  color: red;    
+  
+} 
 .checkedMark{
   margin-top: 15px;
   margin-bottom: -22px;

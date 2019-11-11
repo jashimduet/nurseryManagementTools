@@ -3,7 +3,7 @@ import '../App.css';
 import {Link} from 'react-router-dom';
 import * as API  from '../api';
 import axios from 'axios';
-const ACCESS_TOKEN = "";
+const ACCESS_TOKEN = "234ffdb8-0889-4be3-b096-97ab1679752c";
 
 export default class SignIn extends React.Component{   
 
@@ -14,7 +14,8 @@ export default class SignIn extends React.Component{
         pickupTime: '',
         checkedIn:'',
         child:'',
-        isLoaded:false
+        isLoaded:false,
+        showMessage:false
       };
       
     }
@@ -31,33 +32,42 @@ export default class SignIn extends React.Component{
           isLoaded:true
         });        
       });  
+      console.log('child:',this.state.child);
        
     } 
     
     handleChange=event=> {      
       this.setState({        
-       pickupTime: event.currentTarget.innerHTML   
+       pickupTime: event.currentTarget.innerHTML  
         
-      });
+      });      
                        
     } 
 
-    
-    signIn= async event => {
+    signIn = async event => {
+      if(!this.state.pickupTime){                
+        this.setState({showMessage:true});
+        return        
+      }
       event.preventDefault();
-      const { history } = this.props;           
-     await axios
-      .post(`https://tryfamly.co/api/v2/children/${this.state.child.childId}/checkins`,{accessToken:ACCESS_TOKEN,
-      pickupTime:this.state.pickupTime})
-      .then(
-        data => {   
-          console.log('Logged In ');       
-          
-        },
-        error => {
-          console.error(error);
-        }
-      ).then(()=>{history.push('/');});         
+      const { history } = this.props;
+      await axios
+        .post(
+          `https://tryfamly.co/api/v2/children/${this.state.child.childId}/checkins?accessToken=${ACCESS_TOKEN}&pickupTime=${this.state.pickupTime}` 
+        )
+        .then(
+          data => {
+            console.log("Logged In ");
+            console.log(data);
+          },
+          error => {
+            console.error(error);
+          }
+        )
+        .then(() => {
+          history.push("/");
+        });  
+        console.log('childSign:',this.state.child);  
       
     }
 
@@ -68,7 +78,7 @@ export default class SignIn extends React.Component{
       )
       .then(
         data => {          
-          console.log('Log out'); 
+          console.log('Log out');                      
         },
         error => {
           console.error(error);
@@ -92,8 +102,13 @@ export default class SignIn extends React.Component{
         <div onClick={this.handleChange} className="time">8:00</div>
         <div onClick={this.handleChange} className="time">9:00</div>
         <div onClick={this.handleChange} className="time">15:00</div>
-        <div onClick={this.handleChange} className="time">16:00</div>
+        <div onClick={this.handleChange} className="time">17:00</div>
+        <div onClick={this.handleChange} className="time">18:00</div>
+        <div onClick={this.handleChange} className="time">19:00</div>
         </div>  
+        <div className="message">
+        <div className={!this.state.pickupTime&&this.state.showMessage? '' : 'showMessage'} ><p>Select the picked up time.</p></div>
+        </div>
         <div className="signInButton"> 
           <div>          
         <Link to='/'>
@@ -101,7 +116,7 @@ export default class SignIn extends React.Component{
           </Link>
           </div>
           <div>
-          <button onClick={this.signIn} className="btnSignIn" >Sign in</button>   
+          <button onClick={this.signIn} className="btnSignIn"  >Sign in</button>   
           </div>
           </div>      
         </div>
